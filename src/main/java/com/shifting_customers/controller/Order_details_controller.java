@@ -47,7 +47,7 @@ public class Order_details_controller {
 		return new ResponseEntity<Order_details>(HttpStatus.NO_CONTENT);
 	}
 	
-	//change status of 
+	
 	
 	
 	@PutMapping( value = "/cancelorder")

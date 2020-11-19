@@ -34,7 +34,7 @@ public class UserDaoImp implements UserDao{
 			user_profile.setUser_id(val.getId());
 			user_profile.setEmail(val.getEmail());
 			user_profile.setMobilenumber(val.getMobilenumber());
-			session.save(user_profile);
+			//session.save(user_profile);
 			User_order user_order = new User_order();
 			user_order.setUser_id(val.getId());
 			session.save(user_order);

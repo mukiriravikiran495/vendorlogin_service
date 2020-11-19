@@ -1,14 +1,19 @@
 package com.shifting_customers.model;
 
-import java.util.Date;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
@@ -30,35 +35,15 @@ public class Merchant_profile {
 	@Column( name = "merchant_name")
 	private String merchant_name;
 	
-	@Column( name = "amount")
-	private int amount;
-	
-	@Column( name = "offer")
-	private int offer;
-	
-	@Column( name = "early_delivery")
-	private Date early_delivery;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn( name = "order_id")
+	@JsonBackReference
+	private Order_details order_details;
 
 	
-	public Merchant_profile(int merchant_id, long mobilenumber, String merchant_email, String merchant_name, int amount,
-			int offer, Date early_delivery) {
-		super();
-		this.merchant_id = merchant_id;
-		this.mobilenumber = mobilenumber;
-		this.merchant_email = merchant_email;
-		this.merchant_name = merchant_name;
-		this.amount = amount;
-		this.offer = offer;
-		this.early_delivery = early_delivery;
-	}
-
-
-
 	public int getMerchant_id() {
 		return merchant_id;
 	}
-
-
 
 	public void setMerchant_id(int merchant_id) {
 		this.merchant_id = merchant_id;
@@ -102,37 +87,18 @@ public class Merchant_profile {
 
 
 
-	public int getAmount() {
-		return amount;
+	
+	public Order_details getOrder_details() {
+		return order_details;
 	}
 
 
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setOrder_details(Order_details order_details) {
+		this.order_details = order_details;
 	}
 
 
-
-	public int getOffer() {
-		return offer;
-	}
-
-
-
-	public void setOffer(int offer) {
-		this.offer = offer;
-	}
-
-
-
-	public Date getEarly_delivery() {
-		return early_delivery;
-	}
-
-	public void setEarly_delivery(Date early_delivery) {
-		this.early_delivery = early_delivery;
-	}
 
 	public Merchant_profile() {
 		

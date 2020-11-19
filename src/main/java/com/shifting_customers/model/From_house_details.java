@@ -63,6 +63,7 @@ public class From_house_details {
 		this.floor = floor;
 	}
 
+	
 	public String getService_elevator() {
 		return service_elevator;
 	}
@@ -104,14 +105,7 @@ public class From_house_details {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "From_house_details [from_house_id=" + from_house_id + ", floor=" + floor + ", service_elevator="
-				+ service_elevator + ", pickup_date=" + pickup_date + ", appointment_date=" + appointment_date
-				+ ", pickup_contact=" + pickup_contact + ", pickupname=" + pickupname + ", order_details="
-				+ order_details + "]";
-	}
-
+	
 	
 	public Order_details getOrder_details() {
 		return order_details;
