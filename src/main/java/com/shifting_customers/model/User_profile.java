@@ -1,10 +1,17 @@
 package com.shifting_customers.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
@@ -13,6 +20,7 @@ public class User_profile {
 	
 	@Id
 	@Column( name = "user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int user_id;
 	
 	@Column( name = "email")
@@ -24,7 +32,23 @@ public class User_profile {
 	@Column( name = "name")
 	private String name;
 	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn( name = "order_id")
+	@JsonBackReference
+	private Order_details order_details;
 	
+	public Order_details getOrder_details() {
+		return order_details;
+	}
+
+
+
+	public void setOrder_details(Order_details order_details) {
+		this.order_details = order_details;
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
@@ -47,9 +71,7 @@ public class User_profile {
 
 
 
-	public int getUser_id() {
-		return user_id;
-	}
+	
 
 
 

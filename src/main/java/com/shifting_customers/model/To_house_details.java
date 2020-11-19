@@ -61,6 +61,7 @@ public class To_house_details {
 		this.floor = floor;
 	}
 
+	
 	public String getService_elevator() {
 		return service_elevator;
 	}
@@ -85,12 +86,7 @@ public class To_house_details {
 		this.drop_contact = drop_contact;
 	}
 
-	@Override
-	public String toString() {
-		return "To_house_details [to_house_id=" + to_house_id + ", floor=" + floor + ", service_elevator="
-				+ service_elevator + ", drop_date=" + drop_date + ", drop_contact=" + drop_contact + ", dropname="
-				+ dropname + ", order_details=" + order_details + "]";
-	}
+	
 
 	
 	public Order_details getOrder_details() {
@@ -109,18 +105,7 @@ public class To_house_details {
 		this.dropname = dropname;
 	}
 
-	public To_house_details(int to_house_id, String floor, String service_elevator, Date drop_date, long drop_contact,
-			String dropname, Order_details order_details) {
-		super();
-		this.to_house_id = to_house_id;
-		this.floor = floor;
-		this.service_elevator = service_elevator;
-		this.drop_date = drop_date;
-		this.drop_contact = drop_contact;
-		this.dropname = dropname;
-		this.order_details = order_details;
-	}
-
+	
 	public To_house_details() {
 		
 	}

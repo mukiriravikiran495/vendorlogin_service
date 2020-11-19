@@ -1,6 +1,5 @@
 package com.shifting_customers.model;
 
-
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,39 +11,37 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
-@Table( name = "user_order")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="user_id")
-public class User_order {
-	
+@Table( name = "merchant_order")
+public class Merchant_order {
+
 	@Id
-	@Column( name = "user_id")
-	private int user_id;
+	@Column( name = "merchant_id")
+	private int merchant_id;
 	
-	@OneToMany( mappedBy = "user_order")
+	@OneToMany( mappedBy = "merchant_order")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Set<Order_details> order_details;
-	
-	
-	public int getUser_id() {
-		return user_id;
+
+	public int getMerchant_id() {
+		return merchant_id;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setMerchant_id(int merchant_id) {
+		this.merchant_id = merchant_id;
 	}
-
-	
 
 	
 	
 	@Override
 	public String toString() {
-		return "User_order [user_id=" + user_id + ", order_details=" + order_details + "]";
+		return "Merchant_order [merchant_id=" + merchant_id + ", order_details=" + order_details + "]";
+	}
+
+	public Merchant_order(int merchant_id) {
+		super();
+		this.merchant_id = merchant_id;
+		
 	}
 
 	public Set<Order_details> getOrder_details() {
@@ -55,16 +52,7 @@ public class User_order {
 		this.order_details = order_details;
 	}
 
-	
-	
-
-	public User_order(int user_id) {
-		super();
-		this.user_id = user_id;
-		
-	}
-
-	public User_order() {
+	public Merchant_order() {
 		
 	}
 }

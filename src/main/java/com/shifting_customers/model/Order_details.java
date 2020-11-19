@@ -57,6 +57,14 @@ public class Order_details {
 	@OneToOne( mappedBy = "order_details")
 	private To_house_details to_house_details;
 	
+	@OneToOne( mappedBy = "order_details")
+	private User_profile user_profile;
+	
+	@OneToOne( mappedBy = "order_details")
+	private Merchant_profile merchant_profile;
+	
+	@OneToOne( mappedBy = "order_details")
+	private Delivery_details delivery_details;
 	
 	@OneToMany( mappedBy = "order_details",cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -64,10 +72,39 @@ public class Order_details {
 	
 	@ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn( name = "user_id")
-	@JsonBackReference
 	private User_order user_order;
 
+	@ManyToOne( fetch = FetchType.EAGER)
+	@JoinColumn( name = "merchant_id")
+	@JsonBackReference
+	private Merchant_order merchant_order;
 	
+	
+	
+	public Delivery_details getDelivery_details() {
+		return delivery_details;
+	}
+
+	public void setDelivery_details(Delivery_details delivery_details) {
+		this.delivery_details = delivery_details;
+	}
+
+	public User_profile getUser_profile() {
+		return user_profile;
+	}
+
+	public void setUser_profile(User_profile user_profile) {
+		this.user_profile = user_profile;
+	}
+
+	public Merchant_order getMerchant_order() {
+		return merchant_order;
+	}
+
+	public void setMerchant_order(Merchant_order merchant_order) {
+		this.merchant_order = merchant_order;
+	}
+
 	public String getHouse_type() {
 		return house_type;
 	}
@@ -77,6 +114,16 @@ public class Order_details {
 	}
 
 	
+	
+
+	public Merchant_profile getMerchant_profile() {
+		return merchant_profile;
+	}
+
+	public void setMerchant_profile(Merchant_profile merchant_profile) {
+		this.merchant_profile = merchant_profile;
+	}
+
 	public int getOrder_id() {
 		return order_id;
 	}
@@ -134,13 +181,6 @@ public class Order_details {
 	}
 
 	
-
-	
-
-	
-
-	
-
 	public Order_details(int order_id, String from_location, String to_location, String house_type, Status status,
 			From_house_details from_house_details, To_house_details to_house_details, User_order user_order) {
 		super();
@@ -155,13 +195,7 @@ public class Order_details {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "Order_details [order_id=" + order_id + ", from_location=" + from_location + ", to_location="
-				+ to_location + ", house_type=" + house_type + ", status=" + status + ", from_house_details="
-				+ from_house_details + ", to_house_details=" + to_house_details + ", user_order=" + user_order + "]";
-	}
-
+	
 	public Order_details() {
 		
 	}
