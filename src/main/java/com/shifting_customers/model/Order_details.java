@@ -37,8 +37,8 @@ public class Order_details {
 	@Column( name = "to_location")
 	private String to_location;
 	
-	@Column( name = "house_type")
-	private String house_type;
+	@Column( name = "shift_type")
+	private String shift_type;
 	
 	private Status status = Status.Requested;
 	
@@ -105,16 +105,13 @@ public class Order_details {
 		this.merchant_order = merchant_order;
 	}
 
-	public String getHouse_type() {
-		return house_type;
+	public String getShift_type() {
+		return shift_type;
 	}
 
-	public void setHouse_type(String house_type) {
-		this.house_type = house_type;
+	public void setShift_type(String shift_type) {
+		this.shift_type = shift_type;
 	}
-
-	
-	
 
 	public Merchant_profile getMerchant_profile() {
 		return merchant_profile;
@@ -172,32 +169,16 @@ public class Order_details {
 		this.selected_items = selected_items;
 	}
 
-	public User_order getUser_order() {
-		return user_order;
-	}
-
-	public void setUser_order(User_order user_order) {
-		this.user_order = user_order;
+	
+	public void setUser_houseorder(User_order user_houseorder) {
+		this.user_order = user_houseorder;
 	}
 
 	
-	public Order_details(int order_id, String from_location, String to_location, String house_type, Status status,
-			From_house_details from_house_details, To_house_details to_house_details, User_order user_order) {
-		super();
-		this.order_id = order_id;
-		this.from_location = from_location;
-		this.to_location = to_location;
-		this.house_type = house_type;
-		this.status = status;
-		this.from_house_details = from_house_details;
-		this.to_house_details = to_house_details;
-		this.user_order = user_order;
-	}
 
-	
-	
 	public Order_details() {
 		
 	}
+	
 	
 }

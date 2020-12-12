@@ -1,6 +1,7 @@
 package com.shifting_customers.model;
 
 
+
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -30,23 +31,6 @@ public class User_order {
 	private Set<Order_details> order_details;
 	
 	
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-
-	
-
-	
-	
-	@Override
-	public String toString() {
-		return "User_order [user_id=" + user_id + ", order_details=" + order_details + "]";
-	}
-
 	public Set<Order_details> getOrder_details() {
 		return order_details;
 	}
@@ -55,8 +39,13 @@ public class User_order {
 		this.order_details = order_details;
 	}
 
-	
-	
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 
 	public User_order(int user_id) {
 		super();
@@ -67,4 +56,6 @@ public class User_order {
 	public User_order() {
 		
 	}
+
+	
 }
