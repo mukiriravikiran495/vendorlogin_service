@@ -22,8 +22,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Merchant_profile {
 
 	@Id
+	@Column( name = "merchant_profile_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int merchant_profile_id;
+	
 	@Column( name = "merchant_id")
-	@GeneratedValue( strategy = GenerationType.AUTO)
 	private int merchant_id;
 	
 	@Column( name = "mobilenumber")
@@ -85,20 +88,16 @@ public class Merchant_profile {
 		this.merchant_name = merchant_name;
 	}
 
-
-
 	
 	public Order_details getOrder_details() {
 		return order_details;
 	}
 
-
-
 	public void setOrder_details(Order_details order_details) {
 		this.order_details = order_details;
 	}
 
-
+	
 
 	public Merchant_profile() {
 		

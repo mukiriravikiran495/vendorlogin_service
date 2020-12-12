@@ -19,8 +19,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class User_profile {
 	
 	@Id
-	@Column( name = "user_id")
+	@Column( name = "user_profile_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int user_profile_id;
+	
+	@Column( name = "user_id")
 	private int user_id;
 	
 	@Column( name = "email")
@@ -37,6 +40,25 @@ public class User_profile {
 	@JsonBackReference
 	private Order_details order_details;
 	
+
+	public int getUser_profile_id() {
+		return user_profile_id;
+	}
+
+
+
+	public void setUser_profile_id(int user_profile_id) {
+		this.user_profile_id = user_profile_id;
+	}
+
+
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+
+
 	public Order_details getOrder_details() {
 		return order_details;
 	}

@@ -59,13 +59,9 @@ public class Delivery_details {
 		this.delivery_date = delivery_date;
 	}
 
-	public Order_details getOrder_details() {
-		return order_details;
-	}
-
-	public void setOrder_details(Order_details order_details) {
-		this.order_details = order_details;
-	}
+	
+	
+	
 
 	public Delivery_details(int delivery_id, int price, Date delivery_date, Order_details order_details) {
 		super();
@@ -75,12 +71,14 @@ public class Delivery_details {
 		this.order_details = order_details;
 	}
 
-	@Override
-	public String toString() {
-		return "Delivery_details [delivery_id=" + delivery_id + ", price=" + price + ", delivery_date=" + delivery_date
-				+ ", order_details=" + order_details + "]";
+	public Order_details getOrder_details() {
+		return order_details;
 	}
-	
+
+	public void setOrder_details(Order_details order_details) {
+		this.order_details = order_details;
+	}
+
 	public Delivery_details() {
 		
 	}

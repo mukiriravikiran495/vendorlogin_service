@@ -44,7 +44,6 @@ public class To_house_details {
 	@JsonBackReference
 	private Order_details order_details;
 
-	
 	public int getTo_house_id() {
 		return to_house_id;
 	}
@@ -62,6 +61,8 @@ public class To_house_details {
 	}
 
 	
+	
+
 	public String getService_elevator() {
 		return service_elevator;
 	}
@@ -86,9 +87,7 @@ public class To_house_details {
 		this.drop_contact = drop_contact;
 	}
 
-	
 
-	
 	public Order_details getOrder_details() {
 		return order_details;
 	}

@@ -33,6 +33,9 @@ public class From_house_details {
 	@Column( name = "pickup_date")
 	private Date pickup_date;
 	
+	@Column( name = "house_type")
+	private String house_type;
+	
 	@Column( name = "appointment_date")
 	private Date appointment_date;
 	
@@ -46,6 +49,15 @@ public class From_house_details {
 	@JoinColumn( name = "order_id")
 	@JsonBackReference
 	private Order_details order_details;
+
+	
+	public String getHouse_type() {
+		return house_type;
+	}
+
+	public void setHouse_type(String house_type) {
+		this.house_type = house_type;
+	}
 
 	public int getFrom_house_id() {
 		return from_house_id;
@@ -63,7 +75,6 @@ public class From_house_details {
 		this.floor = floor;
 	}
 
-	
 	public String getService_elevator() {
 		return service_elevator;
 	}
@@ -105,8 +116,7 @@ public class From_house_details {
 	}
 
 	
-	
-	
+
 	public Order_details getOrder_details() {
 		return order_details;
 	}
@@ -114,8 +124,6 @@ public class From_house_details {
 	public void setOrder_details(Order_details order_details) {
 		this.order_details = order_details;
 	}
-
-	
 
 	public From_house_details() {
 		

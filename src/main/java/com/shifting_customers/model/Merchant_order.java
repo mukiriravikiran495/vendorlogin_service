@@ -32,16 +32,18 @@ public class Merchant_order {
 	}
 
 	
-	
-	@Override
-	public String toString() {
-		return "Merchant_order [merchant_id=" + merchant_id + ", order_details=" + order_details + "]";
-	}
-
 	public Merchant_order(int merchant_id) {
 		super();
 		this.merchant_id = merchant_id;
 		
+	}
+
+	
+
+	public Merchant_order(int merchant_id, Set<Order_details> order_details) {
+		super();
+		this.merchant_id = merchant_id;
+		this.order_details = order_details;
 	}
 
 	public Set<Order_details> getOrder_details() {

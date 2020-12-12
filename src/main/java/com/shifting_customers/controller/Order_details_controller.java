@@ -1,3 +1,4 @@
+
 package com.shifting_customers.controller;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class Order_details_controller {
 	@Autowired
 	Order_details_service service;
 	
-	@GetMapping( value = "/get") // get all records
+	@GetMapping( value = "/get/getall") // get all records
 	public List<Order_details> getOrderDetails(){
 		return service.getOrderDetails();
 	}
@@ -50,7 +51,7 @@ public class Order_details_controller {
 	
 	
 	
-	@PutMapping( value = "/cancelorder")
+	@PutMapping( value = "/house_order_details/cancelorder")
 	public ResponseEntity<Order_details> cancelOrder(@RequestBody Order_details order_details){
 		
 		return service.cancelOrder(order_details);

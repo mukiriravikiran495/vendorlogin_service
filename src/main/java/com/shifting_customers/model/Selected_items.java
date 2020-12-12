@@ -36,29 +36,15 @@ public class Selected_items {
 	@JsonBackReference
 	private Order_details order_details;
 	
-	
-	@Override
-	public String toString() {
-		return "Selected_items [selected_items_id=" + selected_items_id + ", item=" + item + ", quantity=" + quantity
-				+ ", item_type=" + item_type + ", order_details=" + order_details + "]";
+
+	public Order_details getOrder_details() {
+		return order_details;
 	}
 
 
-	
-
-
-	public Selected_items(String item, int quantity, String item_type,
-			Order_details order_details) {
-		super();
-		//this.selected_items_id = selected_items_id;
-		this.item = item;
-		this.quantity = quantity;
-		this.item_type = item_type;
+	public void setOrder_details(Order_details order_details) {
 		this.order_details = order_details;
 	}
-
-
-
 
 
 	public int getSelected_items_id() {
@@ -98,16 +84,6 @@ public class Selected_items {
 
 	public void setItem_type(String item_type) {
 		this.item_type = item_type;
-	}
-
-
-	public Order_details getOrder_details() {
-		return order_details;
-	}
-
-
-	public void setOrder_details(Order_details order_details) {
-		this.order_details = order_details;
 	}
 
 

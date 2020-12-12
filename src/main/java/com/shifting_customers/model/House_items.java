@@ -16,8 +16,7 @@ public class House_items {
 	private int house_items_id;
 	
 	@Column( name = "item")
-	private String item;
-	
+	private String item;	
 	@Column( name = "quantity")
 	private int quantity;
 	
