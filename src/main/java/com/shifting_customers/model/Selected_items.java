@@ -32,18 +32,27 @@ public class Selected_items {
 	private String item_type;
 	
 	@ManyToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn( name = "order_id")
+	@JoinColumn( name = "booking_id")
 	@JsonBackReference
-	private Order_details order_details;
+	private Booking_details booking_details;
 	
 
-	public Order_details getOrder_details() {
-		return order_details;
+	
+
+	@Override
+	public String toString() {
+		return "Selected_items [selected_items_id=" + selected_items_id + ", item=" + item + ", quantity=" + quantity
+				+ ", item_type=" + item_type + ", booking_details=" + booking_details + "]";
 	}
 
 
-	public void setOrder_details(Order_details order_details) {
-		this.order_details = order_details;
+	public Booking_details getBooking_details() {
+		return booking_details;
+	}
+
+
+	public void setBooking_details(Booking_details booking_details) {
+		this.booking_details = booking_details;
 	}
 
 

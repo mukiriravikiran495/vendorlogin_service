@@ -22,7 +22,7 @@ public class User implements Serializable{
 	@Id
 	@Column( name = "user_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private long user_id;
 	
 	@Column(name="name")
 	private String name;
@@ -44,26 +44,14 @@ public class User implements Serializable{
 	
 	
 
-	public User(int id, String name, String email, String password, long mobilenumber, int otp) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.mobilenumber = mobilenumber;
-		this.otp = otp;
-	}
-
-	
-	
-	public int getId() {
-		return id;
+	public long getUser_id() {
+		return user_id;
 	}
 
 
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
 	}
 
 
@@ -133,13 +121,5 @@ public class User implements Serializable{
 		
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", mobilenumber="
-				+ mobilenumber + ", otp=" + otp + "]";
-	}
-	
 
 }

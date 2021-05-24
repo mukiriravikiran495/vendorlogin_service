@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shifting_customers.model.User;
-import com.shifting_customers.model.User_order;
+import com.shifting_customers.model.User_booking;
 import com.shifting_customers.model.User_profile;
 @Repository("userDao")
 @Transactional
@@ -21,22 +21,25 @@ public class UserDaoImp implements UserDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	  
+	
 	public String addUser(User val) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		User user = findById(val.getId());
+		User user = findById(val.getUser_id());
 		if( user.getEmail() == null ) {	
 			user.setEmail(val.getEmail());
 			user.setName(val.getName());
 			user.setPassword(val.getPassword());
 			session.save(user); 
 			User_profile user_profile = new User_profile();
-			user_profile.setUser_id(val.getId());
+			
+			user_profile.setUser_id(val.getUser_id());
 			user_profile.setEmail(val.getEmail());
 			user_profile.setMobilenumber(val.getMobilenumber());
-			//session.save(user_profile);
-			User_order user_order = new User_order();
-			user_order.setUser_id(val.getId());
+			user_profile.setName(val.getName());
+			session.save(user_profile);
+			User_booking user_order = new User_booking();
+			user_order.setUser_id(val.getUser_id());
 			session.save(user_order);
 			return " User Created";
 		}			
@@ -45,13 +48,14 @@ public class UserDaoImp implements UserDao{
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation" })
-	public List<User> getUser() {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<User> getUsers() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
+				
+		Query query = session.createQuery("from User");
+		List<User> list = query.list();
 		
-		
-		List<User> list= session.createCriteria(User.class).list();
 		System.out.println(list);
 		
 			return list;
@@ -60,14 +64,14 @@ public class UserDaoImp implements UserDao{
 	}
 
 	@SuppressWarnings("rawtypes")
-	public User findById(int id) {
+	public User findById(long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from User where  user_id=:userid");
 		query.setParameter("userid", id);
 		return (User) query.list().get(0);
 	}
 
-	public User update(User val, int id) {
+	public User update(User val, long id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		User user =(User)session.get(User.class, id);
@@ -77,14 +81,14 @@ public class UserDaoImp implements UserDao{
 		return user;
 	}
 
-	public void delete(int id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		User user = findById(id);
 		session.delete(user);
 	}
 	@Override
-	public User updateCountry(User val, int id){
+	public User updateCountry(User val, long id){
 		Session session = sessionFactory.getCurrentSession();
 		User user = (User)session.load(User.class, id);
 		
@@ -135,7 +139,7 @@ public class UserDaoImp implements UserDao{
 	@Override
 	public String verifyotp(User val) {
 		
-		User user = findById(val.getId());
+		User user = findById(val.getUser_id());
 		if(val.getOtp() == user.getOtp()) {
 			return "Verified ..!! ";
 		}else {
@@ -183,7 +187,7 @@ public class UserDaoImp implements UserDao{
 	@Override
 	public String resetpassword(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		User user2 = findById(user.getId());
+		User user2 = findById(user.getUser_id());
 		if( user2.getPassword().equals(user.getPassword())) {
 			return "Please try with new Password ..!!";
 		}else {
@@ -193,6 +197,7 @@ public class UserDaoImp implements UserDao{
 		}
 		
 	}
+	
 
 	
 	

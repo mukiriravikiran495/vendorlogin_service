@@ -18,12 +18,12 @@ public class UserServiceImp implements UserService {
 	UserDao userDao;
 
 	
-	public List<User> getUser() {
+	public List<User> getUsers() {
 		// TODO Auto-generated method stub
-		return userDao.getUser();
+		return userDao.getUsers();
 	}
 
-	public User findById(int id) {
+	public User findById(long id) {
 		// TODO Auto-generated method stub
 		return userDao.findById(id);
 	}
@@ -33,18 +33,18 @@ public class UserServiceImp implements UserService {
 		return userDao.addUser(user);
 	}
 
-	public void deleteUserById(int id) {
+	public void deleteUserById(long id) {
 		// TODO Auto-generated method stub
 		userDao.delete(id);
 	}
 	@Override
-	public User updatePartially(User user, int id) {
+	public User updatePartially(User user, long id) {
 		userDao.updateCountry(user,id);
 		return userDao.findById(id);
 	}
 
 	@Override
-	public User update(User user,int id) {
+	public User update(User user,long id) {
 		// TODO Auto-generated method stub
 		return userDao.update(user, id);
 	}
@@ -109,5 +109,6 @@ public class UserServiceImp implements UserService {
 	public String resetpassword(User user) {
 		return userDao.resetpassword(user);
 	}
+
 	
 }

@@ -8,7 +8,7 @@
 		<version>2.2.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.shifting_customer</groupId>
 	<artifactId>Shifting_Customer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Shifting_Customer</name>
@@ -48,6 +48,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+		<dependency>
+		    <groupId>com.itextpdf</groupId>
+		    <artifactId>itextpdf</artifactId>
+		    <version>5.5.13.2</version>
+		</dependency>
+        
 		
 
 		<dependency>

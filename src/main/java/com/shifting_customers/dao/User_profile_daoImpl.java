@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shifting_customers.model.User_profile;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 @Repository("user_profile_dao")
 @Transactional
 public class User_profile_daoImpl implements User_profile_dao{
@@ -18,6 +19,7 @@ public class User_profile_daoImpl implements User_profile_dao{
 	@Autowired
 	SessionFactory sessionFactory;
 
+	
 	@Override
 	public List<User_profile> getprofiles() {
 		Session session = sessionFactory.getCurrentSession();
