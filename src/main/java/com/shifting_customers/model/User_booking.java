@@ -18,42 +18,49 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table( name = "user_order")
+@Table( name = "user_booking")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="user_id")
-public class User_order {
+public class User_booking {
 	
 	@Id
 	@Column( name = "user_id")
-	private int user_id;
+	private long user_id;
 	
-	@OneToMany( mappedBy = "user_order")
+	@OneToMany( mappedBy = "user_booking")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private Set<Order_details> order_details;
+	private Set<Booking_details> booking_details;
 	
 	
-	public Set<Order_details> getOrder_details() {
-		return order_details;
+	public Set<Booking_details> getBooking_details() {
+		return booking_details;
 	}
 
-	public void setOrder_details(Set<Order_details> order_details) {
-		this.order_details = order_details;
+	public void setBooking_details(Set<Booking_details> booking_details) {
+		this.booking_details = booking_details;
 	}
 
-	public int getUser_id() {
+	
+
+	@Override
+	public String toString() {
+		return "User_booking [user_id=" + user_id + ", booking_details=" + booking_details + "]";
+	}
+
+	public long getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(long user_id) {
 		this.user_id = user_id;
 	}
 
-	public User_order(int user_id) {
+	public User_booking(long user_id) {
 		super();
 		this.user_id = user_id;
 		
 	}
 
-	public User_order() {
+	public User_booking() {
 		
 	}
 

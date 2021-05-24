@@ -12,29 +12,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shifting_customers.model.User_order;
-import com.shifting_customers.service.User_order_service;
+import com.shifting_customers.model.User_booking;
+
+import com.shifting_customers.service.User_booking_service;
 
 @RestController
 @RequestMapping( path = "/user_order")
-public class User_order_controller {
+public class User_booking_controller {
 
 	@Autowired
-	User_order_service service;
+	User_booking_service service;
 	
 	@GetMapping( value = "/getorders")
-	public List<User_order> getorders(){
-		return service.getorders();
+	public List<User_booking> getorders(){
+		return service.getbookings();
 	}
 	
 	@PostMapping( value = "/placeorder",  headers="Accept=application/json")
-	public ResponseEntity<String> placeOrder(@RequestBody User_order user_order) {
-		String message =  service.placeorder(user_order);
+	public ResponseEntity<String> placeOrder(@RequestBody User_booking user_booking) {
+		String message =  service.placeorder(user_booking);
 		return new ResponseEntity<String>(message,HttpStatus.OK);
 	}
 	
 	@GetMapping( value = "/{id}")
-	public List<User_order> getallOrdersbyUser_id(@PathVariable int id){
-		return service.getallOrdersbyUser_id(id);
+	public List<User_booking> getallBookingsbyUser_id(@PathVariable int id){
+		return service.getallBookingsbyUser_id(id);
 	}
 }

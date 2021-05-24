@@ -8,11 +8,11 @@ import com.shifting_customers.model.User;
 
 public interface UserService {
 	public String createUser(User user);
-	public List<User> getUser();
-	public User findById(int id);
-	public User update(User user, int id);
-	public void deleteUserById(int id);
-	public User updatePartially(User user, int id);
+	public List<User> getUsers();
+	public User findById(long l);
+	public User update(User user, long id);
+	public void deleteUserById(long id);
+	public User updatePartially(User user, long id);
 	public String getOTP(User user);
 	public String verifyotp(User user);
 	public String resendOTP(User user);

@@ -31,6 +31,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	
+	
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
         System.out.println("Fetching User with id " + id);
@@ -89,9 +91,9 @@ public class UserController {
 	     return new ResponseEntity<String>(message,HttpStatus.OK);
 	 }
 
-	 @GetMapping(path="/get", headers="Accept=application/json")
+	 @GetMapping(path="/getallusers", headers="Accept=application/json")
 	 public List<User> getAllUser() {	 
-	  List<User> tasks=userService.getUser();
+	  List<User> tasks=userService.getUsers();
 	  return tasks;
 	
 	 }
@@ -100,11 +102,11 @@ public class UserController {
 	public ResponseEntity<String> updateUser(@RequestBody User currentUser)
 	{
 		System.out.println("sd");
-	User user = userService.findById(currentUser.getId());
+	User user = userService.findById(currentUser.getUser_id());
 	if (user==null) {
 		return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 	}
-	userService.update(currentUser, currentUser.getId());
+	userService.update(currentUser, currentUser.getUser_id());
 	return new ResponseEntity<String>(HttpStatus.OK);
 	}
 	
