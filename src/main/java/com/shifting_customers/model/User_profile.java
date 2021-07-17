@@ -43,6 +43,14 @@ public class User_profile {
 
 	
 
+	public long getUser_profile_id() {
+		return user_profile_id;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "User_profile [user_profile_id=" + user_profile_id + ", user_id=" + user_id + ", email=" + email

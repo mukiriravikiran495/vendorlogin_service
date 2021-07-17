@@ -63,7 +63,7 @@ public class Booking_details {
 	
 	
 	
-	private Booking_status booking_status = Booking_status.BookingCompleted;
+	private Booking_status booking_status = Booking_status.BookingPending;
 	
 	private Payment_mode payment_mode = Payment_mode.Unpaid;
 	

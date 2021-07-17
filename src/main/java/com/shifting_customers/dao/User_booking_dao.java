@@ -2,15 +2,14 @@ package com.shifting_customers.dao;
 
 import java.util.List;
 
-import com.shifting_customers.model.User_booking;
+import com.shifting_customers.model.Booking_details;
 
 public interface User_booking_dao {
 
-	List<User_booking> getbookings();
+	
+	List<Booking_details> getbookings(long user_id);
 
-	String placeorder(User_booking user_booking);
-
-	List<User_booking> getallBookingsbyUser_id(int id);
+	Booking_details getbookingdetails(long booking_id);
 
 	
 }
