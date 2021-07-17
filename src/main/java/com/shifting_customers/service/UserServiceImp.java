@@ -1,7 +1,6 @@
 package com.shifting_customers.service;
 
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,10 +49,9 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public String getOTP(User user) {
-		int otp = generateOTP();
-		user.setOtp(otp);
-		String message = userDao.getOTP(user);
+	public String getOTP(long mobilenumber) {
+		
+		String message = userDao.getOTP(mobilenumber);
 		return message;
 		
 	}
@@ -70,27 +68,7 @@ public class UserServiceImp implements UserService {
 
 	
 
-	private int generateOTP() {
-		int length = 4;
-		char[] otp;
-		String numbers = "0123456789"; 
-		  
-        // Using random method 
-        Random rndm_method = new Random(); 
-  
-         otp = new char[length]; 
-  
-        for (int i = 0; i < length; i++) 
-        { 
-            // Use of charAt() method : to get character value 
-            // Use of nextInt() as it is scanning the value as int 
-            otp[i] = 
-             numbers.charAt(rndm_method.nextInt(numbers.length())); 
-        } 
-        int number =  Integer.parseInt(new String(otp));
-        
-		return number;
-	}
+	
 
 	@Override
 	public String verifyotp(User user) {

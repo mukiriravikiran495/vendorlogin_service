@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -51,11 +50,11 @@ public class UserController {
     }
     
     @PostMapping( value = "/sendotp", headers = "Accept=application/json")
-    public ResponseEntity<String> sendOTP(@RequestBody User user) {
+    public ResponseEntity<String> sendOTP(@RequestParam("mobilenumber") long mobilenumber) {
     	String message;
-    	String number = String.valueOf(user.getMobilenumber());
+    	String number = String.valueOf(mobilenumber);
     	if(isValid(number)) {
-    		 message = userService.getOTP(user);
+    		 message = userService.getOTP(mobilenumber);
 		}
 		else {
 			return new ResponseEntity<String>("Invalid Number..!!",HttpStatus.NOT_ACCEPTABLE);

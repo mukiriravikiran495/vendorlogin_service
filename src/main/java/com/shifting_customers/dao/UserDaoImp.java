@@ -97,25 +97,51 @@ public class UserDaoImp implements UserDao{
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public String getOTP(User user) {
+	public String getOTP(long  mobilenumber) {
 		Session session = sessionFactory.getCurrentSession();
+		int otp = generateOTP();
+		User user = new User();
+		user.setOtp(otp);
+		user.setMobilenumber(mobilenumber);
 		Query query = session.createQuery("from User where mobilenumber ="+user.getMobilenumber());
 		List<User> list = query.list();
 		
 		if(list.isEmpty()) {
 			session.save(user);
-			return "OTP sent Succesfully to "+user.getMobilenumber();
+			return "OTP sent Succesfully to "+mobilenumber;
 			
 		}
 		else {
 			User user2 = list.get(0);
 			if(user.getMobilenumber() == user2.getMobilenumber() && user2.getEmail() == null) {
-				return "OTP has already sent to "+user.getMobilenumber();
+				return "OTP has already sent to "+mobilenumber;
 			}
 			return "account already exists";	
 		}
 	}
 
+	private int generateOTP() {
+		int length = 4;
+		char[] otp;
+		String numbers = "0123456789"; 
+		  
+        // Using random method 
+        Random rndm_method = new Random(); 
+  
+         otp = new char[length]; 
+  
+        for (int i = 0; i < length; i++) 
+        { 
+            // Use of charAt() method : to get character value 
+            // Use of nextInt() as it is scanning the value as int 
+            otp[i] = 
+             numbers.charAt(rndm_method.nextInt(numbers.length())); 
+        } 
+        int number =  Integer.parseInt(new String(otp));
+        
+		return number;
+	}
+	
 	@SuppressWarnings({ "rawtypes", "null" })
 	@Override
 	public String resendOTP(User val) {
@@ -149,27 +175,7 @@ public class UserDaoImp implements UserDao{
 		
 	}
 
-	private int generateOTP() {
-		int length = 4;
-		char[] otp;
-		String numbers = "0123456789"; 
-		  
-        // Using random method 
-        Random rndm_method = new Random(); 
-  
-         otp = new char[length]; 
-  
-        for (int i = 0; i < length; i++) 
-        { 
-            // Use of charAt() method : to get character value 
-            // Use of nextInt() as it is scanning the value as int 
-            otp[i] = 
-             numbers.charAt(rndm_method.nextInt(numbers.length())); 
-        } 
-        int number =  Integer.parseInt(new String(otp));
-        
-		return number;
-	}
+	
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override

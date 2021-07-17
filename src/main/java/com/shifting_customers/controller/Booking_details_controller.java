@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shifting_customers.model.Booking_details;
-import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.Estimated_onebhk_items;
+import com.shifting_customers.model.Estimated_threebhk_items;
+import com.shifting_customers.model.Estimated_twobhk_items;
+import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
 import com.shifting_customers.service.Booking_details_service;
@@ -55,13 +59,6 @@ public class Booking_details_controller {
 	
 	
 	
-	
-	@PutMapping( value = "/house_order_details/cancelorder")
-	public ResponseEntity<Booking_details> cancelOrder(@RequestBody Booking_details booking_details){
-		
-		return service.cancelBooking(booking_details);
-	}
-	
 	@GetMapping( value = "/getmerchantprofiles")
 	public List<Merchant_profile> getmerchantprofiles(@RequestParam("from_location") String city){
 		List<Merchant_profile> list = service.getmerchantprofiles(city);
@@ -76,15 +73,75 @@ public class Booking_details_controller {
 		return list;
 	}
 	
-	@PostMapping( value = "/addbooking_details", headers ="Accept=application/json")
-	public ResponseEntity<String> addbooking_details(@RequestBody Booking_details booking_details){
-		String message = service.addbooking_details(booking_details);
+	@PostMapping( value = "/confirmbooking", headers ="Accept=application/json")
+	public ResponseEntity<String> confirmbooking(@RequestBody Booking_details booking_details){
+		String message = service.confirmbooking(booking_details);
 		return new ResponseEntity<String>(message,HttpStatus.CREATED);
 	}
 	
-	@PostMapping( value = "/addpricedetails", headers ="Accept=application/json")
-	public ResponseEntity<String> addpricedetails(@RequestBody Final_price_details final_price_details, @RequestParam("booking_id") long booking_id){
-		String message = service.addpricedetails(final_price_details, booking_id);
-		return new ResponseEntity<String>(message, HttpStatus.CREATED);
+	@PutMapping( value = "/cancelbooking", headers ="Accept=application/json")
+	public ResponseEntity<String> cancelBooking(@RequestBody Booking_details booking_details){
+		String message = service.cancelbooking(booking_details);
+		return new ResponseEntity<String>(message,HttpStatus.CREATED);
+	}
+	
+	@GetMapping( value = "/getonebhkitems")
+	public List<Estimated_onebhk_items> getonebhkitems(){
+		List<Estimated_onebhk_items> list = service.getonebhkitems();
+		return list;
+	}
+	
+	@GetMapping( value = "/gettwobhkitems")
+	public List<Estimated_twobhk_items> gettwobhkitems(){
+		List<Estimated_twobhk_items> list = service.gettwobhkitems();
+		return list;
+	}
+	
+	@GetMapping( value = "/getthreebhkitems")
+	public List<Estimated_threebhk_items> getthreebhkitems(){
+		List<Estimated_threebhk_items> list = service.getthreebhkitems();
+		return list;
+	}
+	
+	@GetMapping( value = "/getvillaitems")
+	public List<Estimated_villa_items> getvillaitems(){
+		List<Estimated_villa_items> list = service.getvillaitems();
+		return list;
+	}
+	
+	@GetMapping( value = "/gethouseitems")
+	public List<House_items> gethouseitems(){
+		List<House_items> list = service.gethouseitems();
+		return list;
+	}
+	
+	@PostMapping( value = "/addonebhkitems", headers ="Accept=application/json")
+	public String addonebhkitems(@RequestBody Estimated_onebhk_items items){
+		String message = service.addonebhkitems(items);
+		return message;
+	}
+	
+	@PostMapping( value = "/addtwobhkitems", headers ="Accept=application/json")
+	public String addtwobhkitems(@RequestBody Estimated_twobhk_items items){
+		String message = service.addtwobhkitems(items);
+		return message;
+	}
+	
+	@PostMapping( value = "/addthreebhkitems", headers ="Accept=application/json")
+	public String addthreebhkitems(@RequestBody Estimated_threebhk_items items){
+		String message = service.addthreebhkitems(items);
+		return message;
+	}
+	
+	@PostMapping( value = "/addvillaitems", headers ="Accept=application/json")
+	public String addvillaitems(@RequestBody Estimated_villa_items items){
+		String message = service.addvillaitems(items);
+		return message;
+	}
+	
+	@PostMapping( value = "/addhouseitems", headers ="Accept=application/json")
+	public String addhouseitems(@RequestBody House_items items){
+		String message = service.addhouseitems(items);
+		return message;
 	}
 }
