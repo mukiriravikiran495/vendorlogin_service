@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shifting_customers.model.User;
 import com.shifting_customers.model.User_booking;
-import com.shifting_customers.model.User_profile;
+
 @Repository("userDao")
 @Transactional
 public class UserDaoImp implements UserDao{
@@ -31,13 +31,7 @@ public class UserDaoImp implements UserDao{
 			user.setName(val.getName());
 			user.setPassword(val.getPassword());
 			session.save(user); 
-			User_profile user_profile = new User_profile();
 			
-			user_profile.setUser_id(val.getUser_id());
-			user_profile.setEmail(val.getEmail());
-			user_profile.setMobilenumber(val.getMobilenumber());
-			user_profile.setName(val.getName());
-			session.save(user_profile);
 			User_booking user_order = new User_booking();
 			user_order.setUser_id(val.getUser_id());
 			session.save(user_order);

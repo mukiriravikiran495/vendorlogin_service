@@ -11,9 +11,13 @@ import com.shifting_customers.model.Estimated_onebhk_items;
 import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.Final_price_details;
 import com.shifting_customers.model.House_items;
+import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Selected_items;
+import com.shifting_customers.model.User_profile;
 
 
 @Service("booking_details_service")
@@ -59,14 +63,10 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 		return dao.getshift();
 	}
 
-	@Override
-	public String confirmbooking(Booking_details booking_details) {
-		return dao.confirmbooking(booking_details);
-	}
 
 	@Override
-	public String cancelbooking(Booking_details booking_details) {
-		return dao.cancelbooking(booking_details);
+	public String cancelbooking(Booking_details booking_details, long booking_id) {
+		return dao.cancelbooking(booking_details, booking_id);
 	}
 
 	@Override
@@ -118,6 +118,43 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 	public List<House_items> gethouseitems() {
 		return dao.gethouseitems();
 	}
+
+	@Override
+	public String addbookingdetails(Booking_details booking_details, long user_id) {
+		return dao.addbookingdetails(booking_details, user_id);
+	}
+
+	@Override
+	public String addselecteditems(List<Selected_items> selected_items, long booking_id) {
+		return dao.addselecteditems(selected_items, booking_id);
+	}
+
+	@Override
+	public String completebooking(Final_price_details final_price_details, long booking_id) {
+		return dao.completebooking(final_price_details, booking_id);
+	}
+
+	@Override
+	public String addmerchant_details(Merchant_details merchant_details, long booking_id) {
+		return dao.addmerchantdetails(merchant_details,booking_id);
+	}
+
+	@Override
+	public String addmerchant_booking(Booking_details booking_details, long merchant_id, long booking_id) {
+		return dao.addmerchant_details(booking_details, merchant_id, booking_id);
+	}
+
+	@Override
+	public String updateuserprofile(User_profile user_profile, long booking_id) {
+		return dao.updateuserprofile(user_profile,booking_id);
+	}
+
+	@Override
+	public Booking_details getbookingdetails(long booking_id) {
+		return dao.getbookingdetails(booking_id);
+	}
+
+	
 
 	
 	

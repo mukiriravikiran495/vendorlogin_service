@@ -21,9 +21,13 @@ import com.shifting_customers.model.Estimated_onebhk_items;
 import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.Final_price_details;
 import com.shifting_customers.model.House_items;
+import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Selected_items;
+import com.shifting_customers.model.User_profile;
 import com.shifting_customers.service.Booking_details_service;
 
 @RestController
@@ -59,30 +63,11 @@ public class Booking_details_controller {
 	
 	
 	
-	@GetMapping( value = "/getmerchantprofiles")
-	public List<Merchant_profile> getmerchantprofiles(@RequestParam("from_location") String city){
-		List<Merchant_profile> list = service.getmerchantprofiles(city);
-		
-		return list;
-	}
-	
 	@GetMapping( value = "/getshift")
 	public List<Merchant_price_details> getshift(){
 		List<Merchant_price_details> list = service.getshift();
 		
 		return list;
-	}
-	
-	@PostMapping( value = "/confirmbooking", headers ="Accept=application/json")
-	public ResponseEntity<String> confirmbooking(@RequestBody Booking_details booking_details){
-		String message = service.confirmbooking(booking_details);
-		return new ResponseEntity<String>(message,HttpStatus.CREATED);
-	}
-	
-	@PutMapping( value = "/cancelbooking", headers ="Accept=application/json")
-	public ResponseEntity<String> cancelBooking(@RequestBody Booking_details booking_details){
-		String message = service.cancelbooking(booking_details);
-		return new ResponseEntity<String>(message,HttpStatus.CREATED);
 	}
 	
 	@GetMapping( value = "/getonebhkitems")
@@ -144,4 +129,64 @@ public class Booking_details_controller {
 		String message = service.addhouseitems(items);
 		return message;
 	}
+	
+	@PostMapping( value = "/addbookingdetails", headers ="Accept=application/json")
+	public String addbookingdetails(@RequestBody Booking_details booking_details, long user_id) {
+		 String message = service.addbookingdetails(booking_details, user_id);
+		 return message;
+	}
+	
+	@PostMapping( value = "/addselecteditems", headers ="Accept=application/json")
+	public String addselecteditems(@RequestBody List<Selected_items> selected_items, long booking_id) {
+		String message = service.addselecteditems(selected_items, booking_id);
+		return message;
+		
+	}
+	
+	
+	@GetMapping( value = "/getmerchantprofiles")
+	public List<Merchant_profile> getmerchantprofiles(@RequestParam("from_location") String city){
+		List<Merchant_profile> list = service.getmerchantprofiles(city);
+		
+		return list;
+	}
+	
+	
+	@PostMapping( value = "/completebooking", headers = "Accept=application/json")
+	public String completebooking(@RequestBody Final_price_details Final_price_details,@RequestParam("booking_id") long booking_id) {
+		String message = service.completebooking(Final_price_details, booking_id);
+		return message;
+	}
+	
+	@PostMapping( value = "/addmerchantdetails", headers = "Accept=application/json")
+	public String addmerchant_details(@RequestBody Merchant_details merchant_details, @RequestParam("booking_id") long booking_id) {
+		String message = service.addmerchant_details(merchant_details, booking_id);
+		return message;
+	}
+	
+	@PostMapping( value = "/addmerchant_booking", headers = "Accept=application/json")
+	public String addmerchant_booking(@RequestBody Booking_details booking_details, @RequestParam("merchant_id") long merchant_id, @RequestParam("booking_id") long booking_id ) {
+		String message = service.addmerchant_booking(booking_details, merchant_id, booking_id);
+		return message;
+	}
+	
+	@PutMapping( value = "/updateuserprofile", headers = "Accept=application/json")
+	public String updateuserprofile(@RequestBody User_profile user_profile, @RequestParam("booking_id") long booking_id) {
+		String message = service.updateuserprofile(user_profile,booking_id);
+		return message;
+	}
+	
+
+	@PutMapping( value = "/cancelbooking", headers ="Accept=application/json")
+	public ResponseEntity<String> cancelBooking(@RequestBody Booking_details booking_details, @RequestParam("booking_id") long booking_id){
+		String message = service.cancelbooking(booking_details, booking_id);
+		return new ResponseEntity<String>(message,HttpStatus.CREATED);
+	}
+	
+	@GetMapping( value = "/getbookingdetails", headers ="Accept=application/json")
+	public Booking_details getbookingdetails(@RequestParam("booking_id") long booking_id) {
+		Booking_details details = service.getbookingdetails(booking_id);
+		return details;
+	}
+	
 }

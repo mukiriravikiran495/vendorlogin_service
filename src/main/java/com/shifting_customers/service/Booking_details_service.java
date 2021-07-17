@@ -7,9 +7,13 @@ import com.shifting_customers.model.Estimated_onebhk_items;
 import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.Final_price_details;
 import com.shifting_customers.model.House_items;
+import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Selected_items;
+import com.shifting_customers.model.User_profile;
 
 
 public interface Booking_details_service {
@@ -28,9 +32,9 @@ public interface Booking_details_service {
 
 	List<Merchant_price_details> getshift();
 
-	String confirmbooking(Booking_details booking_details);
+	
 
-	String cancelbooking(Booking_details booking_details);
+	String cancelbooking(Booking_details booking_details, long booking_id);
 
 	List<Estimated_onebhk_items> getonebhkitems();
 
@@ -52,5 +56,20 @@ public interface Booking_details_service {
 
 	List<House_items> gethouseitems();
 
+	String addbookingdetails(Booking_details booking_details, long user_id );
+
+	String addselecteditems(List<Selected_items> selected_items, long booking_id);
+
+	String completebooking(Final_price_details final_price_details, long booking_id );
+
+	String addmerchant_details(Merchant_details merchant_details, long booking_id);
+
+	String addmerchant_booking(Booking_details booking_details, long booking_id, long merchant_id);
+
+	String updateuserprofile(User_profile user_profile, long booking_id);
+
+	Booking_details getbookingdetails(long booking_id);
+
+	 
 		
 }

@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shifting_customers.dao.User_booking_dao;
-
-import com.shifting_customers.model.User_booking;
+import com.shifting_customers.model.Booking_details;
 
 @Service("user_booking_service")
 public class User_booking_serviceImpl implements User_booking_service{
@@ -15,19 +14,16 @@ public class User_booking_serviceImpl implements User_booking_service{
 	@Autowired
 	User_booking_dao dao;
 
+	
 	@Override
-	public List<User_booking> getbookings() {
-		return dao.getbookings();
+	public List<Booking_details> getBookings(long user_id) {
+		return dao.getbookings(user_id);
 	}
 
-	@Override
-	public String placeorder(User_booking user_booking) {
-		return dao.placeorder(user_booking);
-	}
 
 	@Override
-	public List<User_booking> getallBookingsbyUser_id(int id) {
-		return dao.getallBookingsbyUser_id(id);
+	public Booking_details getbookingdetails(long booking_id) {
+		return dao.getbookingdetails(booking_id);
 	}
 	
 	
