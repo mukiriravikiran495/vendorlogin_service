@@ -3,12 +3,15 @@ package com.shifting_customers.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.shifting_customers.dao.Booking_details_dao;
 import com.shifting_customers.model.Booking_details;
-import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.Estimated_onebhk_items;
+import com.shifting_customers.model.Estimated_threebhk_items;
+import com.shifting_customers.model.Estimated_twobhk_items;
+import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
 
@@ -44,10 +47,7 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 		return dao.getBookingByBookingId(id);
 	}
 
-	@Override
-	public ResponseEntity<Booking_details> cancelBooking(Booking_details booking_details) {
-		return dao.cancelBooking(booking_details);
-	}
+	
 
 	@Override
 	public List<Merchant_profile> getmerchantprofiles(String city) {
@@ -60,13 +60,67 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 	}
 
 	@Override
-	public String addbooking_details(Booking_details booking_details) {
-		return dao.addbooking_details(booking_details);
+	public String confirmbooking(Booking_details booking_details) {
+		return dao.confirmbooking(booking_details);
 	}
 
 	@Override
-	public String addpricedetails(Final_price_details final_price_details, long booking_id) {
-		return dao.addpricedetails(final_price_details, booking_id);
+	public String cancelbooking(Booking_details booking_details) {
+		return dao.cancelbooking(booking_details);
 	}
 
+	@Override
+	public List<Estimated_onebhk_items> getonebhkitems() {
+		return dao.getonebhkitems();
+	}
+
+	@Override
+	public List<Estimated_twobhk_items> gettwobhkitems() {
+		return dao.gettwobhkitems();
+	}
+
+	@Override
+	public List<Estimated_threebhk_items> getthreebhkitems() {
+		return dao.getthreebhkitems();
+	}
+
+	@Override
+	public String addonebhkitems(Estimated_onebhk_items items ) {
+		return dao.addonebhkitems(items);
+	}
+
+	@Override
+	public String addtwobhkitems(Estimated_twobhk_items items) {
+		return dao.addtwobhkitems(items);
+	}
+
+	@Override
+	public String addthreebhkitems(Estimated_threebhk_items items) {
+		return dao.addthreebhkitems(items);
+	}
+
+	@Override
+	public String addvillaitems(Estimated_villa_items items) {
+		return dao.addvillaitems(items);
+	}
+
+	@Override
+	public String addhouseitems(House_items items) {
+		return dao.addhouseitems(items);
+	}
+
+	@Override
+	public List<Estimated_villa_items> getvillaitems() {
+		return dao.getvillaitems();
+	}
+
+	@Override
+	public List<House_items> gethouseitems() {
+		return dao.gethouseitems();
+	}
+
+	
+	
+	
+	
 }

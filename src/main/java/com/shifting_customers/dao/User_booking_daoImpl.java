@@ -93,7 +93,9 @@ public class User_booking_daoImpl implements User_booking_dao{
 			new_details.setTo_floor(o.getTo_floor());
 			new_details.setTo_lift(o.getTo_lift());
 			new_details.setTo_location(o.getTo_location());
-			new_details.setStatus(o.getStatus());
+			new_details.setBooking_status(o.getBooking_status());
+			new_details.setPayment_mode(o.getPayment_mode());
+			new_details.setPayment_status(o.getPayment_status());
 			new_details.setUser_booking(user);
 			long merchant_id = o.getMerchant_details().getMerchant_id();
 			System.out.println("Merchant_id :" +merchant_id);
@@ -106,7 +108,7 @@ public class User_booking_daoImpl implements User_booking_dao{
 			System.out.println("1");
 			
 			User_profile profile = new User_profile();
-			profile.setUser_profile_id(o.getUser_profile().getUser_profile_id());
+			
 			profile.setUser_id(o.getUser_profile().getUser_id());
 			profile.setEmail(o.getUser_profile().getEmail());
 			profile.setMobilenumber(o.getUser_profile().getMobilenumber());
@@ -143,11 +145,13 @@ public class User_booking_daoImpl implements User_booking_dao{
 			System.out.println("1");
 			
 			Final_price_details price = new Final_price_details();
-			price.setAmount(o.getFinal_price_details().getAmount());
-			
-			price.setFinal_amount(o.getFinal_price_details().getFinal_amount());
+			price.setTotal_amount(o.getFinal_price_details().getTotal_amount());
+			price.setTax(o.getFinal_price_details().getTax());
+			price.setTollgate_charges(o.getFinal_price_details().getTollgate_charges());
+			price.setWrapping_charges(o.getFinal_price_details().getWrapping_charges());
+			price.setGrand_total(o.getFinal_price_details().getGrand_total());
 			price.setFrinal_price_details_id(o.getFinal_price_details().getFrinal_price_details_id());
-			price.setInstallanduninstall(o.getFinal_price_details().getInstallanduninstall());
+			price.setAcinstallanduninstall(o.getFinal_price_details().getAcinstallanduninstall());
 			price.setLabour_charges(o.getFinal_price_details().getLabour_charges());
 			price.setOffer(o.getFinal_price_details().getOffer());
 			price.setTax(o.getFinal_price_details().getTax());

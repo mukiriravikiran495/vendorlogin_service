@@ -17,7 +17,7 @@ import com.shifting_customers.model.User_booking;
 import com.shifting_customers.service.User_booking_service;
 
 @RestController
-@RequestMapping( path = "/user_order")
+@RequestMapping( path = "/user_booking")
 public class User_booking_controller {
 
 	@Autowired

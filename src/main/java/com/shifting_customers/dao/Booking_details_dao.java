@@ -2,10 +2,12 @@ package com.shifting_customers.dao;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
 import com.shifting_customers.model.Booking_details;
-import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.Estimated_onebhk_items;
+import com.shifting_customers.model.Estimated_threebhk_items;
+import com.shifting_customers.model.Estimated_twobhk_items;
+import com.shifting_customers.model.Estimated_villa_items;
+import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
 
@@ -21,14 +23,35 @@ public interface Booking_details_dao {
 
 	Booking_details getBookingByBookingId(long id);
 
-	ResponseEntity<Booking_details> cancelBooking(Booking_details booking_details);
-
+	
 	List<Merchant_profile> getmerchantprofiles(String city);
 
 	List<Merchant_price_details> getshift();
 
-	String addbooking_details(Booking_details booking_details);
+	String confirmbooking(Booking_details booking_details);
 
-	String addpricedetails(Final_price_details final_price_details, long booking_id);
+	String cancelbooking(Booking_details booking_details);
 
+	List<Estimated_onebhk_items> getonebhkitems();
+
+	List<Estimated_twobhk_items> gettwobhkitems();
+
+	List<Estimated_threebhk_items> getthreebhkitems();
+
+	String addonebhkitems(Estimated_onebhk_items items);
+
+	String addtwobhkitems(Estimated_twobhk_items items);
+
+	String addthreebhkitems(Estimated_threebhk_items items);
+
+	String addvillaitems(Estimated_villa_items items);
+
+	String addhouseitems(House_items items);
+
+	List<Estimated_villa_items> getvillaitems();
+
+	List<House_items> gethouseitems();
+
+	
+	
 }

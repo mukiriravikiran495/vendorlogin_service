@@ -42,14 +42,6 @@ public class User_profile {
 	
 
 	
-	
-	public long getUser_profile_id() {
-		return user_profile_id;
-	}
-
-
-
-
 
 	@Override
 	public String toString() {

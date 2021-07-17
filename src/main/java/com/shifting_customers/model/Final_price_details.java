@@ -22,11 +22,11 @@ public class Final_price_details {
 	@GeneratedValue( strategy = GenerationType.AUTO)
 	private int frinal_price_details_id;
 	
-	@Column( name = "amount")
-	private long amount;
+	@Column( name = "total_amount")
+	private long total_amount;
 	
-	@Column( name = "offer")
-	private int offer;
+	@Column( name = "tollgate_charges")
+	private int tollgate_charges;
 	
 	@Column( name = "tax")
 	private int tax;
@@ -34,50 +34,24 @@ public class Final_price_details {
 	@Column( name = "labour_charges")
 	private int labour_charges;
 	
-	@Column( name = "installanduninstall")
-	private int installanduninstall;
+	@Column( name = "acinstallanduninstall")
+	private int acinstallanduninstall;
 	
-	@Column( name = "final_amount")
-	private long final_amount;
+	@Column( name = "wrapping_charges")
+	private int wrapping_charges;
+	
+	@Column( name = "grand_total")
+	private long grand_total;
+	
+	@Column( name = "offer")
+	private int offer;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn( name = "booking_id")
-	@JsonBackReference
-	private Booking_details booking_details;
-
-
-	@Override
-	public String toString() {
-		return "Final_price_details [frinal_price_details_id=" + frinal_price_details_id + ", amount=" + amount
-				+ ", offer=" + offer + ", tax=" + tax + ", labour_charges=" + labour_charges + ", installanduninstall="
-				+ installanduninstall + ", final_amount=" + final_amount + ", booking_details=" + booking_details + "]";
-	}
-
-
-	public int getFrinal_price_details_id() {
-		return frinal_price_details_id;
-	}
-
-
-	public void setFrinal_price_details_id(int frinal_price_details_id) {
-		this.frinal_price_details_id = frinal_price_details_id;
-	}
-
-
-	public long getAmount() {
-		return amount;
-	}
-
-
-	public void setAmount(long amount) {
-		this.amount = amount;
-	}
-
-
+	
 	public int getOffer() {
 		return offer;
 	}
+
 
 
 	public void setOffer(int offer) {
@@ -85,9 +59,54 @@ public class Final_price_details {
 	}
 
 
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn( name = "booking_id")
+	@JsonBackReference
+	private Booking_details booking_details;
+
+	
+	
+	public int getFrinal_price_details_id() {
+		return frinal_price_details_id;
+	}
+
+
+
+	public void setFrinal_price_details_id(int frinal_price_details_id) {
+		this.frinal_price_details_id = frinal_price_details_id;
+	}
+
+
+
+	public long getTotal_amount() {
+		return total_amount;
+	}
+
+
+
+	public void setTotal_amount(long total_amount) {
+		this.total_amount = total_amount;
+	}
+
+
+
+	public int getTollgate_charges() {
+		return tollgate_charges;
+	}
+
+
+
+	public void setTollgate_charges(int tollgate_charges) {
+		this.tollgate_charges = tollgate_charges;
+	}
+
+
+
 	public int getTax() {
 		return tax;
 	}
+
 
 
 	public void setTax(int tax) {
@@ -95,9 +114,11 @@ public class Final_price_details {
 	}
 
 
+
 	public int getLabour_charges() {
 		return labour_charges;
 	}
+
 
 
 	public void setLabour_charges(int labour_charges) {
@@ -105,24 +126,41 @@ public class Final_price_details {
 	}
 
 
-	public int getInstallanduninstall() {
-		return installanduninstall;
+
+	public int getAcinstallanduninstall() {
+		return acinstallanduninstall;
 	}
 
 
-	public void setInstallanduninstall(int installanduninstall) {
-		this.installanduninstall = installanduninstall;
+
+	public void setAcinstallanduninstall(int acinstallanduninstall) {
+		this.acinstallanduninstall = acinstallanduninstall;
 	}
 
 
-	public long getFinal_amount() {
-		return final_amount;
+
+	public int getWrapping_charges() {
+		return wrapping_charges;
 	}
 
 
-	public void setFinal_amount(long final_amount) {
-		this.final_amount = final_amount;
+
+	public void setWrapping_charges(int wrapping_charges) {
+		this.wrapping_charges = wrapping_charges;
 	}
+
+
+
+	public long getGrand_total() {
+		return grand_total;
+	}
+
+
+
+	public void setGrand_total(long grand_total) {
+		this.grand_total = grand_total;
+	}
+
 
 
 	public Booking_details getBooking_details() {
@@ -130,10 +168,13 @@ public class Final_price_details {
 	}
 
 
+
 	public void setBooking_details(Booking_details booking_details) {
 		this.booking_details = booking_details;
 	}
-	
+
+
+
 	public Final_price_details() {
 		
 	}

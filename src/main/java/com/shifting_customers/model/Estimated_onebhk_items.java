@@ -6,12 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "house_items")
-public class House_items {
+@Table( name = "estimated_onebhk_items")
+public class Estimated_onebhk_items {
 
 	@Id
-	@Column( name = "house_items_id")
-	private int house_items_id;
+	@Column( name = "onebhk_items_id")
+	private int onebhk_items_id;
 	
 	@Column( name = "item_id")
 	private int item_id;
@@ -25,10 +25,12 @@ public class House_items {
 	@Column( name = "quantity")
 	private int quantity;
 
-	
+	public int getOnebhk_items_id() {
+		return onebhk_items_id;
+	}
 
-	public void setHouse_items_id(int house_items_id) {
-		this.house_items_id = house_items_id;
+	public void setOnebhk_items_id(int onebhk_items_id) {
+		this.onebhk_items_id = onebhk_items_id;
 	}
 
 	public int getItem_id() {
@@ -63,7 +65,8 @@ public class House_items {
 		this.quantity = quantity;
 	}
 	
-	public House_items() {
+	public Estimated_onebhk_items() {
 		
 	}
+	
 }

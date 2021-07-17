@@ -13,7 +13,7 @@ public interface UserDao {
 	public User update(User user, long id);
 	public User updateCountry(User user, long id);
 	public void delete(long id);
-	public String getOTP(User user);
+	public String getOTP(long mobilenumber);
 	public String verifyotp(User user);
 	public String resendOTP(User user);
 	public String findByEmail(User user);
