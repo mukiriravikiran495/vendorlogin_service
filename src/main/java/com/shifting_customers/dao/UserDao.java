@@ -2,7 +2,7 @@ package com.shifting_customers.dao;
 
 import java.util.List;
 
-
+import com.shifting_customers.model.Reviews;
 import com.shifting_customers.model.User;
 
 
@@ -18,5 +18,6 @@ public interface UserDao {
 	public String resendOTP(User user);
 	public String findByEmail(User user);
 	public String resetpassword(User user);
+	public String addreview(Reviews reviews, long user_id, long merchant_id);
 	
 }

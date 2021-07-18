@@ -19,16 +19,20 @@ import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
 import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.House_categories;
 import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_booking;
 import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Office_categories;
 import com.shifting_customers.model.Payment_mode;
 import com.shifting_customers.model.Payment_status;
 import com.shifting_customers.model.Selected_items;
 import com.shifting_customers.model.User_booking;
 import com.shifting_customers.model.User_profile;
+import com.shifting_customers.model.Vehicle_categories;
+import com.shifting_customers.model.Vehicle_details;
 
 @Repository("booking_details_dao")
 @Transactional
@@ -334,6 +338,58 @@ public class Booking_details_daoImpl implements Booking_details_dao{
 		Session session = sessionFactory.getCurrentSession();
 		Booking_details details = session.get(Booking_details.class, booking_id);
 		return details;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List<House_categories> gethousecategories() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from House_categories");
+		List<House_categories> list = query.list();
+		return list;
+		
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List<Office_categories> getofficecategories() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Office_categories");
+		List<Office_categories> list = query.list();
+		return list;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List<Vehicle_categories> getvehiclecategories() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Vehicle_categories");
+		List<Vehicle_categories> list = query.list();
+		return list;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public String addvehicle_details(List<Vehicle_details> vehicle_details, long booking_id) {
+		Session session = sessionFactory.getCurrentSession();
+		Booking_details details = session.get(Booking_details.class, booking_id);
+		Set<Vehicle_details> items = new HashSet<Vehicle_details>(vehicle_details);
+		Iterator itr = items.iterator();
+		Vehicle_details item = null;
+		while(itr.hasNext()) {
+			item = (Vehicle_details) itr.next();
+			Vehicle_details s = new Vehicle_details();
+			s.setVehicle_details_id(item.getVehicle_details_id());
+			s.setVehicle_type(item.getVehicle_type());
+			s.setNameOnRC(item.getNameOnRC());
+			s.setRegistration_date(item.getRegistration_date());
+			s.setVehicle_company(item.getVehicle_company());
+			s.setVehicle_model(item.getVehicle_model());
+			s.setBooking_details(details);
+			session.save(s);
+		}
+		System.out.println("Vehicle details added ..!!");
+		return "Inserted ..!!";
 	}
 
 	

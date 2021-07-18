@@ -12,12 +12,16 @@ import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
 import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.House_categories;
 import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Office_categories;
 import com.shifting_customers.model.Selected_items;
 import com.shifting_customers.model.User_profile;
+import com.shifting_customers.model.Vehicle_categories;
+import com.shifting_customers.model.Vehicle_details;
 
 
 @Service("booking_details_service")
@@ -152,6 +156,26 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 	@Override
 	public Booking_details getbookingdetails(long booking_id) {
 		return dao.getbookingdetails(booking_id);
+	}
+
+	@Override
+	public List<House_categories> gethousecategories() {
+		return dao.gethousecategories();
+	}
+
+	@Override
+	public List<Office_categories> getofficecategories() {
+		return dao.getofficecategories();
+	}
+
+	@Override
+	public List<Vehicle_categories> getvehiclecategories() {
+		return dao.getvehiclecategories();
+	}
+
+	@Override
+	public String addvehicle_details(List<Vehicle_details> vehicle_details, long booking_id) {
+		return dao.addvehicle_details(vehicle_details, booking_id);
 	}
 
 	

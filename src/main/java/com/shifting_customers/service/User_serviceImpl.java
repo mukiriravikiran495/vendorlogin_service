@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shifting_customers.dao.UserDao;
+import com.shifting_customers.model.Reviews;
 import com.shifting_customers.model.User;
 
 @Service("userService")
 @Transactional
-public class UserServiceImp implements UserService {
+public class User_serviceImpl implements UserService {
 	@Autowired
 	UserDao userDao;
 
@@ -86,6 +87,11 @@ public class UserServiceImp implements UserService {
 	@Override
 	public String resetpassword(User user) {
 		return userDao.resetpassword(user);
+	}
+
+	@Override
+	public String addreview(Reviews reviews, long user_id, long merchant_id) {
+		return userDao.addreview(reviews,user_id,merchant_id);
 	}
 
 	

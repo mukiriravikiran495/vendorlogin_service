@@ -69,6 +69,7 @@ public class Booking_details {
 	
 	private Payment_status payment_status = Payment_status.Unpaid;
 	
+	private Shiftyng_payment_status shiftyng_payment_status = Shiftyng_payment_status.Unpaid;
 	
 	@OneToOne( mappedBy = "booking_details")
 	private User_profile user_profile;
@@ -78,6 +79,10 @@ public class Booking_details {
 	
 	@OneToOne( mappedBy = "booking_details")
 	private Final_price_details final_price_details;
+	
+	@OneToMany( mappedBy = "booking_details",cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private Set<Vehicle_details> vehicle_details;
 	
 	@OneToOne( mappedBy = "booking_details")
 	private Booking_transaction_details booking_transaction_details;
@@ -99,16 +104,6 @@ public class Booking_details {
 	private Merchant_booking merchant_booking;
 	
 	
-	
-	
-
-	public Shiftyng_transaction_details getShiftyng_transaction_details() {
-		return shiftyng_transaction_details;
-	}
-
-	public void setShiftyng_transaction_details(Shiftyng_transaction_details shiftyng_transaction_details) {
-		this.shiftyng_transaction_details = shiftyng_transaction_details;
-	}
 
 	@Override
 	public String toString() {
@@ -121,6 +116,41 @@ public class Booking_details {
 				+ booking_transaction_details + ", selected_items=" + selected_items + ", user_booking=" + user_booking
 				+ ", merchant_booking=" + merchant_booking + "]";
 	}
+	
+	
+	public Set<Vehicle_details> getVehicle_details() {
+		return vehicle_details;
+	}
+
+
+	public void setVehicle_details(Set<Vehicle_details> vehicle_details) {
+		this.vehicle_details = vehicle_details;
+	}
+
+
+	public Shiftyng_payment_status getShiftyng_payment_status() {
+		return shiftyng_payment_status;
+	}
+
+
+
+	public void setShiftyng_payment_status(Shiftyng_payment_status shiftyng_payment_status) {
+		this.shiftyng_payment_status = shiftyng_payment_status;
+	}
+
+
+
+	public Shiftyng_transaction_details getShiftyng_transaction_details() {
+		return shiftyng_transaction_details;
+	}
+
+
+
+	public void setShiftyng_transaction_details(Shiftyng_transaction_details shiftyng_transaction_details) {
+		this.shiftyng_transaction_details = shiftyng_transaction_details;
+	}
+
+
 
 	public Payment_status getPayment_status() {
 		return payment_status;
