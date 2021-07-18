@@ -22,12 +22,16 @@ import com.shifting_customers.model.Estimated_threebhk_items;
 import com.shifting_customers.model.Estimated_twobhk_items;
 import com.shifting_customers.model.Estimated_villa_items;
 import com.shifting_customers.model.Final_price_details;
+import com.shifting_customers.model.House_categories;
 import com.shifting_customers.model.House_items;
 import com.shifting_customers.model.Merchant_details;
 import com.shifting_customers.model.Merchant_price_details;
 import com.shifting_customers.model.Merchant_profile;
+import com.shifting_customers.model.Office_categories;
 import com.shifting_customers.model.Selected_items;
 import com.shifting_customers.model.User_profile;
+import com.shifting_customers.model.Vehicle_categories;
+import com.shifting_customers.model.Vehicle_details;
 import com.shifting_customers.service.Booking_details_service;
 
 @RestController
@@ -189,4 +193,24 @@ public class Booking_details_controller {
 		return details;
 	}
 	
+	@GetMapping( value = "/gethousecategories")
+	public List<House_categories> gethousecategories() {
+		return service.gethousecategories();
+	}
+	
+	@GetMapping( value = "/getofficecategories")
+	public List<Office_categories> getofficecategories() {
+		return service.getofficecategories();
+	}
+	
+	@GetMapping( value = "/getvehiclecategories")
+	public List<Vehicle_categories> getvehiclecategories() {
+		return service.getvehiclecategories();
+	}
+	
+	@PostMapping( value = "/addvehicle_details", headers ="Accept=application/json")
+	public String addvehicle_details(@RequestBody List<Vehicle_details>  vehicle_details, @RequestParam("booking_id") long booking_id) {
+		String message = service.addvehicle_details(vehicle_details, booking_id);
+		return message;
+	}
 }

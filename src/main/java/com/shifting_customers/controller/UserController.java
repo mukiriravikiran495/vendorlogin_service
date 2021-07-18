@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.shifting_customers.model.Reviews;
 import com.shifting_customers.model.User;
 import com.shifting_customers.service.UserService;
 
@@ -141,4 +142,9 @@ public class UserController {
 		return new ResponseEntity<String>(message,HttpStatus.OK);
 	}
 	
+	@PostMapping( value = "/addreview", headers="Accept=application/json")
+	public ResponseEntity<String> addreview(@RequestBody Reviews reviews, long user_id, long merchant_id){
+		String message = userService.addreview(reviews, user_id, merchant_id);
+		return new ResponseEntity<String>(message,HttpStatus.OK);
+	}
 }

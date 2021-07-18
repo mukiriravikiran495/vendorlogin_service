@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shifting_customers.model.Merchant_reviews;
+import com.shifting_customers.model.Reviews;
 import com.shifting_customers.model.User;
 import com.shifting_customers.model.User_booking;
+import com.shifting_customers.model.User_reviews;
 
 @Repository("userDao")
 @Transactional
@@ -35,6 +38,10 @@ public class UserDaoImp implements UserDao{
 			User_booking user_order = new User_booking();
 			user_order.setUser_id(val.getUser_id());
 			session.save(user_order);
+			
+			User_reviews user_reviews = new User_reviews();
+			user_reviews.setUser_id(val.getUser_id());
+			session.save(user_reviews);
 			return " User Created";
 		}			
 		else {						
@@ -196,6 +203,21 @@ public class UserDaoImp implements UserDao{
 			return " password reset succesfully ..!!";
 		}
 		
+	}
+
+	@Override
+	public String addreview(Reviews reviews, long user_id, long merchant_id) {
+		Session session = sessionFactory.getCurrentSession();
+		Reviews r = new Reviews();
+		r.setReview_id(reviews.getReview_id());
+		r.setDescription(reviews.getDescription());
+		r.setRating(reviews.getRating());
+		User_reviews user = session.get(User_reviews.class, user_id);
+		r.setUser_reviews(user);
+		Merchant_reviews merchant = session.get(Merchant_reviews.class, merchant_id);
+		r.setMerchant_reviews(merchant);
+		session.save(r);
+		return "Inserted ..!!";
 	}
 	
 
