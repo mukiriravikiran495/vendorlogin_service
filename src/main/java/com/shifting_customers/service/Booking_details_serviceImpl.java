@@ -1,5 +1,6 @@
 package com.shifting_customers.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -176,6 +177,11 @@ public class Booking_details_serviceImpl implements Booking_details_service{
 	@Override
 	public String addvehicle_details(List<Vehicle_details> vehicle_details, long booking_id) {
 		return dao.addvehicle_details(vehicle_details, booking_id);
+	}
+
+	@Override
+	public String reschedulebooking(long booking_id, String pickup_date) throws ParseException {
+		return dao.reschedulebooking(booking_id, pickup_date);
 	}
 
 	
