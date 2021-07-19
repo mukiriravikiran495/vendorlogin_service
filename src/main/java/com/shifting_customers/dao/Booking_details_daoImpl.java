@@ -1,10 +1,14 @@
 package com.shifting_customers.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -390,6 +394,17 @@ public class Booking_details_daoImpl implements Booking_details_dao{
 		}
 		System.out.println("Vehicle details added ..!!");
 		return "Inserted ..!!";
+	}
+
+	@Override
+	public String reschedulebooking(long booking_id, String pickup_date) throws ParseException, HibernateException {
+		Session session = sessionFactory.getCurrentSession();
+		Date date1 = null;
+		Booking_details details = session.get(Booking_details.class, booking_id);
+		date1 = new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date);
+		details.setPickup_date(date1);
+		session.update(details);
+		return "Updated ..!!";
 	}
 
 	

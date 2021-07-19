@@ -1,6 +1,7 @@
 
 package com.shifting_customers.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -211,6 +212,12 @@ public class Booking_details_controller {
 	@PostMapping( value = "/addvehicle_details", headers ="Accept=application/json")
 	public String addvehicle_details(@RequestBody List<Vehicle_details>  vehicle_details, @RequestParam("booking_id") long booking_id) {
 		String message = service.addvehicle_details(vehicle_details, booking_id);
+		return message;
+	}
+	
+	@PutMapping( value = "/reschedulebooking", headers ="Accept=application/json")
+	public String reschedulebooking(@RequestParam("booking_id") long booking_id, @RequestParam("pickup_date") String pickup_date) throws ParseException {
+		String message = service.reschedulebooking(booking_id, pickup_date);
 		return message;
 	}
 }

@@ -36,17 +36,13 @@ public class Reviews {
 	
 
 	
-	public User_reviews getUser_reviews() {
-		return user_reviews;
-	}
+	
 
 	public void setUser_reviews(User_reviews user_reviews) {
 		this.user_reviews = user_reviews;
 	}
 
-	public Merchant_reviews getMerchant_reviews() {
-		return merchant_reviews;
-	}
+	
 
 	public void setMerchant_reviews(Merchant_reviews merchant_reviews) {
 		this.merchant_reviews = merchant_reviews;

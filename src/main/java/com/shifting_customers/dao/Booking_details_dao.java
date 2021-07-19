@@ -1,5 +1,6 @@
 package com.shifting_customers.dao;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.shifting_customers.model.Booking_details;
@@ -81,6 +82,8 @@ public interface Booking_details_dao {
 	List<Vehicle_categories> getvehiclecategories();
 
 	String addvehicle_details(List<Vehicle_details> vehicle_details, long booking_id);
+
+	String reschedulebooking(long booking_id, String pickup_date) throws ParseException;
 
 	
 	
