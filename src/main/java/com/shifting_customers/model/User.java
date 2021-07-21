@@ -35,7 +35,7 @@ public class User implements Serializable{
 	@Column(name = "password")
 	private String password;
 	
-	@Id
+	
 	@Column(name = "mobilenumber")
 	private long mobilenumber;
 	

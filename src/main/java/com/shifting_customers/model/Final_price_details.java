@@ -46,8 +46,45 @@ public class Final_price_details {
 	@Column( name = "offer")
 	private int offer;
 	
+	@Column( name = "operator_amount")
+	private long operator_amount;
+	
+	@Column( name = "shiftyng_amount")
+	private long shiftyng_amount;
 	
 	
+
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn( name = "booking_id")
+	@JsonBackReference
+	private Booking_details booking_details;
+
+	
+	public long getOperator_amount() {
+		return operator_amount;
+	}
+
+
+
+	public void setOperator_amount(long operator_amount) {
+		this.operator_amount = operator_amount;
+	}
+
+
+
+	public long getShiftyng_amount() {
+		return shiftyng_amount;
+	}
+
+
+
+	public void setShiftyng_amount(long shiftyng_amount) {
+		this.shiftyng_amount = shiftyng_amount;
+	}
+
+
+
 	public int getOffer() {
 		return offer;
 	}
@@ -58,15 +95,6 @@ public class Final_price_details {
 		this.offer = offer;
 	}
 
-
-
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn( name = "booking_id")
-	@JsonBackReference
-	private Booking_details booking_details;
-
-	
-	
 	public int getFrinal_price_details_id() {
 		return frinal_price_details_id;
 	}
