@@ -33,6 +33,8 @@ import com.shifting_customers.model.Office_categories;
 import com.shifting_customers.model.Payment_mode;
 import com.shifting_customers.model.Payment_status;
 import com.shifting_customers.model.Selected_items;
+import com.shifting_customers.model.Shiftyng_payment_status;
+
 import com.shifting_customers.model.User_booking;
 import com.shifting_customers.model.User_profile;
 import com.shifting_customers.model.Vehicle_categories;
@@ -208,9 +210,10 @@ public class Booking_details_daoImpl implements Booking_details_dao{
 		details.setTo_location(booking_details.getTo_location());
 		details.setPickup_date(booking_details.getPickup_date());
 		details.setShift_type(booking_details.getShift_type());
-		details.setBooking_status(Booking_status.BookingPending);
+		details.setBooking_status(Booking_status.BookingCompleted);
 		details.setPayment_status(Payment_status.Unpaid);
 		details.setPayment_mode(Payment_mode.Unpaid);
+		details.setShiftyng_payment_status(Shiftyng_payment_status.Unpaid);
 		details.setUser_booking(user_booking);
 		
 		session.save(details);
@@ -218,9 +221,9 @@ public class Booking_details_daoImpl implements Booking_details_dao{
 		User_profile user_profile = new User_profile();
 		//user_profile.setUser_profile_id(booking_details.getUser_profile().getUser_profile_id());
 		user_profile.setUser_id(booking_details.getUser_profile().getUser_id());
-		user_profile.setName(booking_details.getUser_profile().getName());
-		user_profile.setEmail(booking_details.getUser_profile().getEmail());
 		user_profile.setMobilenumber(booking_details.getUser_profile().getMobilenumber());
+		
+		
 		user_profile.setBooking_details(details);
 		session.save(user_profile);
 		
@@ -288,6 +291,8 @@ public class Booking_details_daoImpl implements Booking_details_dao{
 			price.setTollgate_charges(final_price_details.getTollgate_charges());
 			price.setTotal_amount(final_price_details.getTotal_amount());
 			price.setWrapping_charges(final_price_details.getWrapping_charges());
+			price.setOperator_amount(final_price_details.getOperator_amount());
+			price.setShiftyng_amount(final_price_details.getShiftyng_amount());
 			session.save(price);
 			System.out.println("Inserted ..!!");
 		}
