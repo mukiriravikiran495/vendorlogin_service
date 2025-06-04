@@ -22,7 +22,9 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/v1/api/vendor/sendotp",
-                        "/v1/api/vendor/verifyotp"
+                        "/v1/api/vendor/verifyotp",
+                        "/v1/api/vendor/resendotp",
+                        "/v1/api/vendor/auth/token"
                 		).permitAll()
                 .anyRequest().authenticated()
             )

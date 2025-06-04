@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.vendorloginservice.domain.TokenID;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 
@@ -36,15 +37,15 @@ public class JwtUtil {
             .compact();
     }
 
-    public TokenID generateTokenId() {
-    	TokenID tokenId = new TokenID();
-    	tokenId.setToken(java.util.UUID.randomUUID().toString());
-        long issuedAt = System.currentTimeMillis();
-        long expiresAt = issuedAt + 1000 * 60 * 30; // 30 minutes in milliseconds
-        tokenId.setExpires(Long.toString(expiresAt));
-        tokenId.setStatus("200");
-        tokenId.setResult("Token ID Created Succesfully");
-        return tokenId;
+    public String generateTokenId() {
+    	Key key = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
+
+        return Jwts.builder()
+                .setSubject("default-user")
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30)) // 30 mins
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
     }
     
 

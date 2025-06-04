@@ -3,7 +3,7 @@ package com.vendorloginservice.domain;
 public class TokenID {
 
 	private String token;
-	private String expires;
+	private long expires;
 	private String status;
 	private String result;
 	public String getToken() {
@@ -12,10 +12,11 @@ public class TokenID {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getExpires() {
+	
+	public long getExpires() {
 		return expires;
 	}
-	public void setExpires(String expires) {
+	public void setExpires(long expires) {
 		this.expires = expires;
 	}
 	public String getStatus() {
