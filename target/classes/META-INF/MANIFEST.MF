@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: HP
+Build-Jdk: 21.0.6
+Implementation-Title: Shifting_Customer
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.vendorlogin_service
+Implementation-URL: https://spring.io/projects/spring-boot/vendorlogin_s
+ ervice
+Created-By: Maven Integration for Eclipse
+
