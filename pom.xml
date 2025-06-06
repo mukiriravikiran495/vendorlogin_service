@@ -12,7 +12,7 @@
 	<groupId>com.vendorlogin_service</groupId>
 	<artifactId>vendorlogin_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Shifting_Customer</name>
+	<name>vendorlogin_servicer</name>
 	<description>vendorlogin_service Spring Boot</description>
 
 	<properties>

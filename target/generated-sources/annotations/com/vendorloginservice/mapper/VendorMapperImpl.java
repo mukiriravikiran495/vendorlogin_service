@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-05T01:23:41+0530",
+    date = "2025-06-06T14:33:31+0530",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.41.0.v20250213-1140, environment: Java 21.0.6 (Eclipse Adoptium)"
 )
 @Component
@@ -30,7 +30,7 @@ public class VendorMapperImpl implements VendorMapper {
         vendorDetailsDTO.setV_lastName( entity.getV_lastName() );
         vendorDetailsDTO.setV_mobile( entity.getV_mobile() );
         vendorDetailsDTO.setV_email( entity.getV_email() );
-        vendorDetailsDTO.setVendorAddress( vendorAddressListToVendorAddressDTOList( entity.getVendorAddress() ) );
+        vendorDetailsDTO.setVendorAddress( toDto( entity.getVendorAddress() ) );
 
         return vendorDetailsDTO;
     }
@@ -67,7 +67,7 @@ public class VendorMapperImpl implements VendorMapper {
         vendorDetails.setV_lastName( dto.getV_lastName() );
         vendorDetails.setV_mobile( dto.getV_mobile() );
         vendorDetails.setV_email( dto.getV_email() );
-        vendorDetails.setVendorAddress( vendorAddressDTOListToVendorAddressList( dto.getVendorAddress() ) );
+        vendorDetails.setVendorAddress( toEntity( dto.getVendorAddress() ) );
 
         return vendorDetails;
     }
@@ -103,31 +103,5 @@ public class VendorMapperImpl implements VendorMapper {
         }
 
         return list;
-    }
-
-    protected List<VendorAddressDTO> vendorAddressListToVendorAddressDTOList(List<VendorAddress> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<VendorAddressDTO> list1 = new ArrayList<VendorAddressDTO>( list.size() );
-        for ( VendorAddress vendorAddress : list ) {
-            list1.add( toDto( vendorAddress ) );
-        }
-
-        return list1;
-    }
-
-    protected List<VendorAddress> vendorAddressDTOListToVendorAddressList(List<VendorAddressDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<VendorAddress> list1 = new ArrayList<VendorAddress>( list.size() );
-        for ( VendorAddressDTO vendorAddressDTO : list ) {
-            list1.add( toEntity( vendorAddressDTO ) );
-        }
-
-        return list1;
     }
 }

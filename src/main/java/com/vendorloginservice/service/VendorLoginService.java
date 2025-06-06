@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.vendorloginservice.domain.SendOTPRequest;
 import com.vendorloginservice.domain.SendOTPResponse;
+import com.vendorloginservice.domain.VendorDetailsDTO;
 import com.vendorloginservice.entity.VendorCredentials;
-import com.vendorloginservice.entity.VendorDetails;
 import com.vendorloginservice.exceptions.StatusHandler;
 
 public interface VendorLoginService {
@@ -18,6 +18,6 @@ public interface VendorLoginService {
 
 	List<VendorCredentials> getall();
 
-	List<VendorDetails> getdetails();
+	List<VendorDetailsDTO> getdetails();
 
 }

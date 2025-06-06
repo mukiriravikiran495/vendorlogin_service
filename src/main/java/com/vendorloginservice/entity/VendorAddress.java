@@ -3,12 +3,14 @@ package com.vendorloginservice.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,8 +26,9 @@ public class VendorAddress implements Serializable{
 	private String v_state;
 	private String v_zipcode;
 
-	@ManyToOne
+	@OneToOne
     @JoinColumn(name = "vendor_id") // FK in CUST_ADDRESS table
+	@JsonBackReference
     private VendorDetails vendor;
 
 	public long getV_address_id() {

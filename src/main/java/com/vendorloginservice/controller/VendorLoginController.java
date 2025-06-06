@@ -19,8 +19,8 @@ import com.vendorloginservice.constants.AppConstants;
 import com.vendorloginservice.domain.SendOTPRequest;
 import com.vendorloginservice.domain.SendOTPResponse;
 import com.vendorloginservice.domain.TokenID;
+import com.vendorloginservice.domain.VendorDetailsDTO;
 import com.vendorloginservice.entity.VendorCredentials;
-import com.vendorloginservice.entity.VendorDetails;
 import com.vendorloginservice.exceptions.InvalidRequestException;
 import com.vendorloginservice.exceptions.StatusHandler;
 import com.vendorloginservice.service.VendorLoginService;
@@ -47,7 +47,7 @@ public class VendorLoginController {
 	}
 	
 	@GetMapping( value = "/getvendordetails")
-	public List<VendorDetails> getdetails(){
+	public List<VendorDetailsDTO> getdetails(){
 		return service.getdetails();
 	}
 	

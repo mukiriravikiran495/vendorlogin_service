@@ -10,7 +10,7 @@ public class VendorDetailsDTO {
 	private String v_lastName;
 	private String v_mobile;
 	private String v_email;
-	private List<VendorAddressDTO> vendorAddress;
+	private VendorAddressDTO vendorAddress;
 	public String getVendor_id() {
 		return vendor_id;
 	}
@@ -41,12 +41,13 @@ public class VendorDetailsDTO {
 	public void setV_email(String v_email) {
 		this.v_email = v_email;
 	}
-	public List<VendorAddressDTO> getVendorAddress() {
+	public VendorAddressDTO getVendorAddress() {
 		return vendorAddress;
 	}
-	public void setVendorAddress(List<VendorAddressDTO> vendorAddress) {
+	public void setVendorAddress(VendorAddressDTO vendorAddress) {
 		this.vendorAddress = vendorAddress;
 	}
+	
 	
 	
 }

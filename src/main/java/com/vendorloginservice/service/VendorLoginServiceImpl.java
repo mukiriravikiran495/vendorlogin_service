@@ -14,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vendorloginservice.constants.AppConstants;
 import com.vendorloginservice.domain.SendOTPRequest;
 import com.vendorloginservice.domain.SendOTPResponse;
+import com.vendorloginservice.domain.VendorDetailsDTO;
 import com.vendorloginservice.entity.VendorCredentials;
 import com.vendorloginservice.entity.VendorDetails;
 import com.vendorloginservice.exceptions.InvalidRequestException;
 import com.vendorloginservice.exceptions.StatusHandler;
+import com.vendorloginservice.mapper.VendorMapper;
 import com.vendorloginservice.repository.VendorDetailsRepository;
 import com.vendorloginservice.repository.VendorLoginRepository;
 
@@ -28,10 +30,13 @@ public class VendorLoginServiceImpl implements VendorLoginService{
 	
 	private final VendorLoginRepository vendorLoginRepository;
 	private final VendorDetailsRepository vendorDetailsRepository;
+	private final VendorMapper mapper;
 	
-	public VendorLoginServiceImpl(VendorLoginRepository vendorLoginRepository, VendorDetailsRepository vendorDetailsRepository) {
+	public VendorLoginServiceImpl(VendorLoginRepository vendorLoginRepository, VendorDetailsRepository vendorDetailsRepository,
+			VendorMapper mapper) {
 		this.vendorLoginRepository = vendorLoginRepository;
 		this.vendorDetailsRepository = vendorDetailsRepository;
+		this.mapper = mapper;
 	}
 
 	@Override
@@ -136,9 +141,10 @@ public class VendorLoginServiceImpl implements VendorLoginService{
 	}
 
 	@Override
-	public List<VendorDetails> getdetails() {
+	public List<VendorDetailsDTO> getdetails() {
 		
-		return vendorDetailsRepository.findAll();
+		List<VendorDetails> list =  vendorDetailsRepository.findAll();
+		return mapper.toDtoList(list);
 	}
 	
 }

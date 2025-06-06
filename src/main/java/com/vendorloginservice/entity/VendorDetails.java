@@ -1,13 +1,12 @@
 package com.vendorloginservice.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,8 +21,8 @@ public class VendorDetails implements Serializable{
 	private String v_mobile;
 	private String v_email;
 	
-	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<VendorAddress> vendorAddress;
+	@OneToOne(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private VendorAddress vendorAddress;
 	
 	public long getVendor_id() {
 		return vendor_id;
@@ -71,11 +70,12 @@ public class VendorDetails implements Serializable{
 	public VendorDetails() {
 		
 	}
-	public List<VendorAddress> getVendorAddress() {
+	public VendorAddress getVendorAddress() {
 		return vendorAddress;
 	}
-	public void setVendorAddress(List<VendorAddress> vendorAddress) {
+	public void setVendorAddress(VendorAddress vendorAddress) {
 		this.vendorAddress = vendorAddress;
 	}
+	
 	
 }
